@@ -38,7 +38,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 Clone o repositório e acesse a pasta `APIEmail`:
    ```bash
-   git clone https://github.com/MarcosBrhemem/APIEmail.git
+   git clone github.com/Marcos-Brhemem/APIEmail
    go mod download
    go run main.go
    
