@@ -23,7 +23,7 @@ API em desenvolvimento para a automatização de envio de e-mails de forma autom
 
 ## 🚀 Tecnologias
 
-Esse projeto foi desenvolvido com as seguintes tecnologias:
+Esse projeto está em  desenvolvimento com as seguintes tecnologias:
 
 - Golang
 - Html e Css
