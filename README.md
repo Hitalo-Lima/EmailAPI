@@ -7,8 +7,7 @@ API em desenvolvimento para a automatização de envio de e-mails de forma autom
 <p align="center">
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-requisitos">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#Instalação ">Licença</a>
+  <a href="#-instalação ">Instalação</a>
 </p>
 
 <p align="center">
