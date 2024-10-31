@@ -18,7 +18,7 @@ API em desenvolvimento para a automatização de envio de e-mails de forma autom
 <br>
 
 <p align="center">
-  <img alt="projeto DevLinks" src="image/preview.png" width="100%">
+  <img alt="projeto DevLinks" src="img/preview.png" width="100%">
 </p>
 
 ## 🚀 Tecnologias
