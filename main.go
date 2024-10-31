@@ -11,8 +11,8 @@ import (
 const (
 	host     = "smtp.gmail.com"
 	port     = 587
-	username = "bremen.mcn@gmail.com"
-	password = "tetryvqveqozheas"
+	username = "emai.exemplo@gmail.com" // email remetente
+	password = "djashdjashdjashdj"      // senha do app, que gera no gmail com autênticação de 2 fatores.
 )
 
 func main() {
