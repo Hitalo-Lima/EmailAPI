@@ -18,7 +18,7 @@ API em desenvolvimento para a automatização de envio de e-mails de forma autom
 <br>
 
 <p align="center">
-  <img alt="projeto DevLinks" src="img/preview.png" width="100%">
+  <img alt="Corpo Email" src="img/preview.png" width="100%">
 </p>
 
 ## 🚀 Tecnologias
@@ -43,4 +43,4 @@ Clone o repositório e acesse a pasta `APIEmail`:
    go run main.go
    
 
-Feito com ♥ by Marcos Brhemem :wave:
+Feito com ♥ by Marcos Brhemem 👊
