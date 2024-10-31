@@ -34,7 +34,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - **Golang**: Versão 1.18 ou superior
 - **Biblioteca**: github.com/go-gomail/gomail : Pacote para enviar e-mails.
 
-## ⚙️ instalação
+## ⚙️ Instalação
 
 Clone o repositório e acesse a pasta `APIEmail`:
 
