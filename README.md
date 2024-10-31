@@ -39,8 +39,7 @@ Esse projeto está em  desenvolvimento com as seguintes tecnologias:
 Clone o repositório e acesse a pasta `APIEmail`:
 
 ```bash
-git clone https://github.com/Marcos-Brhemem/EmailAPI.git
-cd APIEmail
+git clone: github.com/Marcos-Brhemem/EmailAPI.git
 go mod download
 go run main.go
 
