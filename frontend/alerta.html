@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alerta da requisição de desenvolvimento</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+      th {
+        background-color: #f7f7f7;
+      }
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Atenção!</h2>
+    <p>As seguintes requisições estão próximas da data final:</p>
+
+    {{range .}}
+    <h3>Requisição Nº {{.NReq}}</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Data requisição</th>
+          <th>Data fim</th>
+          <th>Solicitante</th>
+          <th>Artigo</th>
+          <th>Composição</th>
+          <th>Cor</th>
+          <th>Tam. Amostra</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{.DataRequisicao}}</td>
+          <td>{{.DataFim}}</td>
+          <td>{{.Solicitante}}</td>
+          <td>{{.NomeArtigo}}</td>
+          <td>{{.Composicao}}</td>
+          <td>{{.Cor}}</td>
+          <td>{{.TamanhoAmostra}}</td>
+        </tr>
+      </tbody>
+    </table>
+    {{end}}
+
+    <img src="cid:DelRio.png" alt="Logo DelRio" />
+  </body>
+</html>

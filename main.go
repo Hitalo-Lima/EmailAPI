@@ -1,51 +1,72 @@
 package main
 
 import (
-	"bytes"
+	backend "APIEmail/backend/config"
+	"APIEmail/backend/controllers"
+	"APIEmail/backend/routes"
 	"fmt"
-	"text/template"
+	"log"
+	"net/http"
+	"time"
 
-	"gopkg.in/gomail.v2"
+	_ "github.com/denisenkom/go-mssqldb"
+	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
-const (
-	host     = "smtp.gmail.com"
-	port     = 587
-	username = "emai.exemplo@gmail.com" // email remetente
-	password = "djashdjashdjashdj"      // senha do app, que gera no gmail com autênticação de 2 fatores.
-)
-
-func main() {
-
-	// dialer para conexão
-
-	dialer := gomail.NewDialer(host, port, username, password)
-
-	// criar uma mensagem
-
-	msg := gomail.NewMessage()
-	msg.SetHeader("From", username)
-	msg.SetHeader("To", username)
-	msg.SetHeader("Subject", "Relatório das Ob's pendentes") // Assunto
-	msg.SetBody("text/html", getBody())
-
-	// Imagem no corpo do email em anexo tmb.
-
-	msg.Embed("DelRio.png")
-
-	if err := dialer.DialAndSend(msg); err != nil {
-		panic(err)
+func init() {
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Fatalf("Erro ao carregar o arquivo .env")
 	}
 
-	fmt.Println("Mensagem enviada.")
-
+	controllers.LoadEmailConfig()
 }
 
-// função para atribuir o html
+func main() {
+	// Inicializar a conexão com o banco
+	backend.InitDB()
 
-func getBody() string {
-	t := template.Must(template.ParseFiles("mail.html"))
-	var buff bytes.Buffer
-	t.Execute(&buff, nil)
-	return buff.String()
+	// Inicia o cron job
+	iniciarCron()
+
+	// Configura o roteador Gin
+	r := gin.Default()
+
+	routes.ConfigurarRotas(r)
+
+	// Log para confirmar que o servidor está iniciado
+	fmt.Println("Servidor iniciado em http://localhost:8080")
+	log.Fatal(r.Run(":8080")) // Inicializa o servidor Gin na porta 8080
+}
+
+// Função para iniciar o cron (verificação a cada 24 horas) e o servidor HTTP
+func iniciarCron() {
+	// Configura o cron para iniciar a verificação de alertas a cada 24 horas
+	go verificarAlertasPeriodicamente()
+
+	// Log para saber que o cron foi iniciado
+	log.Println("Verificação de alertas iniciada a cada 24 horas")
+}
+
+// Função que será chamada a cada 24 horas
+func verificarAlertasPeriodicamente() {
+	ticker := time.NewTicker(24 * time.Hour) // Ticker a cada 24 horas
+	defer ticker.Stop()                      // Certifique-se de parar o ticker quando terminar
+
+	// Use for range para iterar sobre os valores recebidos no canal
+	for range ticker.C {
+		// Faz a requisição GET para a rota /alerta
+		resp, err := http.Get("http://localhost:8080/alerta")
+		if err != nil {
+			fmt.Println("Erro ao fazer a requisição:", err)
+			continue
+		}
+
+		// Exibe a resposta do servidor
+		fmt.Printf("Resposta do servidor: %s\n", resp.Status)
+
+		// Certifique-se de fechar o corpo da resposta após o uso
+		resp.Body.Close()
+	}
 }
