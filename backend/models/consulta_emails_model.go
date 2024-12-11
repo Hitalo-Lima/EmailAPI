@@ -2,8 +2,6 @@ package models
 
 import backend "APIEmail/backend/config"
 
-// Importa o pacote db
-
 // consultarEmails faz uma consulta ao banco e retorna os e-mails
 func ConsultarEmails() ([]string, error) {
 	var emails []string

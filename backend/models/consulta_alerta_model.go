@@ -1,8 +1,6 @@
 package models
 
 import (
-
-	// Certifique-se de importar o pacote de banco de dados
 	backend "APIEmail/backend/config"
 
 	_ "github.com/denisenkom/go-mssqldb" // Driver do banco SQL Server
@@ -26,7 +24,8 @@ func ConsultarDadosAlerta() ([]CamposAlerta, error) {
 	// Exemplo de consulta SQL para pegar os dados
 	query := `SELECT ID, CONVERT(VARCHAR, DATEADD(DAY, 45, DATA_REQUISICAO), 103) AS DATA_FIM, 
 			  CONVERT(VARCHAR, DATA_REQUISICAO, 103) AS DATA_REQUISICAO, SOLICITANTE, NOME_ARTIGO, 
-			  COMPOSICAO, COR, TAMANHO_AMOSTRA FROM DRI_REQUISICAO_DESENVOLVIMENTO drd WHERE STATUS <> 'Concluído'`
+			  COMPOSICAO, COR, TAMANHO_AMOSTRA FROM DRI_REQUISICAO_DESENVOLVIMENTO drd
+				WHERE STATUS NOT IN ('Concluído')`
 
 	// A variável db representa a conexão com o banco (definida anteriormente no seu código)
 	rows, err := backend.GetDB().Query(query)

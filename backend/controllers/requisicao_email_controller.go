@@ -13,6 +13,7 @@ import (
 
 func RequisicaoHandler(c *gin.Context) {
 	requisicoes, err := models.ConsultarRequisicao()
+
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Erro ao consultar as requisições"})
 		return

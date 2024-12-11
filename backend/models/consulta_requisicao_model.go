@@ -10,10 +10,10 @@ type Requisicao struct {
 	DataRequisicao   string
 	Solicitante      string
 	NivelNecessidade string
-	NomeArtigo       string
-	Composicao       string
-	Cor              string
-	TamanhoAmostra   string
+	NomeArtigo       *string
+	Composicao       *string
+	Cor              *string
+	TamanhoAmostra   *string
 }
 
 // consultarRequisicao faz uma consulta ao banco e retorna a requisicão
